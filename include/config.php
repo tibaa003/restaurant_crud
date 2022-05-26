@@ -1,8 +1,8 @@
 <?php
-define("db_ip", "127.0.0.1");
-define("db_username", "root");
-define("db_password", "");
-define("db_name", 'en_stor_restaurant');
+define("db_ip", ""); // database ip address
+define("db_username", ""); // username
+define("db_password", ""); // password
+define("db_name", 'en_stor_restaurant'); // name
 
 $conn = mysqli_connect(db_ip, db_username, db_password, db_name);
 
