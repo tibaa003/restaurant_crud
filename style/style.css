@@ -1,0 +1,89 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* index css */
+header {
+	display: flex;
+	flex-direction: row;
+	vertical-align: center;
+}
+
+header a {
+	font-size: 2em;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 2em;
+}
+
+#nav {
+	display: flex;
+	flex-direction: column;
+}
+
+#nav a {
+	margin: 10px;
+	font-size: 2em;
+}
+
+/* Bestillinger css */
+#bestillinger {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	margin: 10px;
+	font-size: 2em;
+}
+
+.bestilling {
+	min-width: 20%;
+	border: 1px solid black;
+	margin: 20px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.rett_bestilling {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	border-bottom: 1px black solid;
+}
+
+.bestilling form input {
+	font-size: 1em;
+	width: 50%;
+}
+
+/* Lage bestilling CSS */
+#bestilling_form {
+	font-size: 2em;
+}
+
+#bestilling_form input {
+	font-size: 1em;
+	margin-bottom: 10px;
+}
+
+#rett_antall {
+	width: 150px;
+}
+
+.muted {
+	color: gray;
+}
+
+/* regning CSS */
+#regning_form {
+	font-size: 1.5em;
+}
+
+#regning_form input {
+	font-size: 1em;
+	margin-bottom: 10px;
+}
+
+textarea{
+	resize: none;
+}
