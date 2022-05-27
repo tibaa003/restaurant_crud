@@ -3,7 +3,7 @@ include("../include/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // SELECT regning, rett, bord og servitor info
-    $query = "SELECT bestilling.regning_nr, rett.navn AS rett_navn, rett.pris, servitor.navn AS servitor_navn, bestilling.bord_id FROM bestilling INNER JOIN bord ON bestilling.bord_id = bord.bord_id INNER JOIN regning_aktiv ON bestilling.regning_nr = regning_aktiv.regning_nr INNER JOIN rett ON bestilling.rett_id = rett.rett_id INNER JOIN servitor ON bord.servitor_id = servitor.servitor_id WHERE bestilling.bord_id = ? AND regning_aktiv.aktiv = 1";
+    $query = "SELECT bestilling.regning_nr, rett.navn AS rett_navn, rett.pris, servitor.navn AS servitor_navn, bestilling.bord_id, bestilling.antall_retter FROM bestilling INNER JOIN bord ON bestilling.bord_id = bord.bord_id INNER JOIN regning_aktiv ON bestilling.regning_nr = regning_aktiv.regning_nr INNER JOIN rett ON bestilling.rett_id = rett.rett_id INNER JOIN servitor ON bord.servitor_id = servitor.servitor_id WHERE bestilling.bord_id = ? AND regning_aktiv.aktiv = 1";
     if ($stmt = mysqli_prepare($conn, $query)) {
         mysqli_stmt_bind_param($stmt, "i", $bord_id);
         $bord_id = $_POST["bordnummer"];
@@ -38,10 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     echo "Kvittering for bordnummer: " . $bestillinger[0]["bord_id"] . "\n";
     echo "-----------------------------------------------\n";
-    echo "Rett - Pris\n";
+    echo "Rett - Pris - Antall\n";
     for ($i = 0; $i < count($bestillinger); $i++) {
-        echo $bestillinger[$i]["rett_navn"] . " - " . $bestillinger[$i]["pris"] . " kr\n";
-        $totalpris += $bestillinger[$i]["pris"];
+        echo $bestillinger[$i]["rett_navn"] . " - " . $bestillinger[$i]["pris"] . " kr - " . $bestillinger[$i]["antall_retter"] . "\n";
+        $totalpris += $bestillinger[$i]["pris"] * $bestillinger[$i]["antall_retter"];
     }
     echo "Sum - " . $totalpris . " kr\n";
     ?>
